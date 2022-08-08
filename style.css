@@ -1,13 +1,19 @@
 * {
     font-family: "Helvetica", sans-serif;
     box-sizing: border-box;
+    background-color: rgb(50, 50, 50);
+    color: white;
 }
 
 .grid {
-    height: 500px;
-    width: 500px;
+    height: 600px;
+    width: 600px;
 	display:grid;
     border-style: solid;
+}
+
+h1 {
+    font-family: "gameover", serif;
 }
 
 .content {
