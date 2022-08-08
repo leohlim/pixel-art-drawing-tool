@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="style.css">
     <title>Etch-a-Sketch</title>
 </head>
-<body>
+
+<body ondragstart="return false;" ondrop="return false;">
     <div class="flex-container">
         <div class="title"><center><h1>Shleo Painter v1.0</h1></center></div>
         <div class="content">
@@ -16,6 +17,7 @@
                         value="#e66465">
                 <button class="button" onclick="changeColor('black')">Pen</button>
                 <button class="button" onclick="changeColor('white')">Eraser</button>
+                <button class="button" onclick="changeColor('shading')">Shading</button>
                 <button class="button" onclick="changeColor('random')">Rainbow</button>
                 <button class="button" onclick="toggleGridlines()">Toggle Gridlines</button>
                 <button class="button" onclick="clearCanvas()">Clear Canvas</button>

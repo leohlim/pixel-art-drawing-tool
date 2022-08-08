@@ -3,6 +3,10 @@ let gridSize = document.querySelector('.grid-size');
 const colorPicker = document.getElementById("colorPicker");
 colorPicker.oninput = (e) => changeColor(e.target.value);
 
+let draw = false;
+window.addEventListener("mousedown", (e) => draw = true);
+window.addEventListener("mouseup", (e) => draw = false);
+
 
 
 function createGrid(size) {
@@ -16,6 +20,7 @@ function createGrid(size) {
     for (let i = 0; i < amount; i++) {
         let square = document.createElement('div');
         square.addEventListener ("mouseover", colorSquare);
+        square.addEventListener ("mousedown", colorSquare);
         square.classList.add("square");
         square.style.backgroundColor = 'white';
         grid.insertAdjacentElement("beforeend", square);
@@ -35,12 +40,19 @@ function changeSize(input) {
     }
 }
 
-function colorSquare() {
-    if((color == 'random')) {
+function colorSquare(e) {
+    if(e.type === 'mouseover' && !draw) return
+    if (color == 'random') {
         this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    } else if (color == 'shading') {
+        if (this.style.opacity >= 0.1) {
+            this.style.opacity = Number(this.style.opacity) + 0.1; // <-- HERE
+          } else {
+            this.style.opacity = 0.1;
+            }
     } else {
         this.style.backgroundColor = color;
-    }
+    } 
 }
 
 function changeColor(choice) {
