@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Etch-a-Sketch</title>
+</head>
+<body>
+    <div class="flex-container">
+        <div class="title"><center><h1>Etch-a-Sketch</h1></center></div>
+        <div class="content">
+            <div class="toolbar">
+                <input type="color" id="colorPicker" 
+                        value="#e66465">
+                <button class="button" onclick="changeColor('white')">Eraser</button>
+                <button class="button" onclick="changeColor('random')">Rainbow</button>
+                <button class="button" onclick="toggleGridlines()">Toggle Gridlines</button>
+                <button class="button" onclick="clearCanvas()">Clear Canvas</button>
+                
+                <div class="slidecontainer">
+                    <center><p class="grid-size">Grid Size: 16x16px</p></center>
+                    <input type="range" min="2" max="100" value="16" class="slider" onchange="changeSize(this.value)"/>
+                </div>
+            </div>
+            
+            
+            <div class="grid"></div>
+        </div>
+    </div>
+    
+</body>
+<script src="script.js"></script>
+</html>
