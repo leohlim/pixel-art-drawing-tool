@@ -1,7 +1,10 @@
-let color = "#e66465";
+
 let gridSize = document.querySelector('.grid-size');
 const colorPicker = document.getElementById("colorPicker");
 colorPicker.oninput = (e) => changeColor(e.target.value);
+const DEFAULT_COLOR = colorPicker.value;
+let color = DEFAULT_COLOR;
+console.log(colorPicker.value);
 
 let draw = false;
 window.addEventListener("mousedown", (e) => draw = true);
@@ -9,6 +12,7 @@ window.addEventListener("mouseup", (e) => draw = false);
 
 
 
+// Creates the canvas with a given size. 
 function createGrid(size) {
     let grid = document.querySelector('.grid');
     let squares = grid.querySelectorAll('div');
@@ -17,6 +21,7 @@ function createGrid(size) {
     grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
     let amount = size * size;
 
+    // Creates the individual cells
     for (let i = 0; i < amount; i++) {
         let square = document.createElement('div');
         square.addEventListener ("mouseover", colorSquare);
@@ -30,6 +35,7 @@ function createGrid(size) {
 
 createGrid(16);
 
+// Change the size of the canvas grid.
 function changeSize(input) {
     if (input >= 2 && input <= 100) {
         createGrid(input);
@@ -40,19 +46,15 @@ function changeSize(input) {
     }
 }
 
+// When user is hovering over and clicking down, change the mode/color.
 function colorSquare(e) {
-    if(e.type === 'mouseover' && !draw) return
+    if(e.type === 'mouseover' && !draw) return;
     if (color == 'random') {
         this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-    } else if (color == 'shading') {
-        if (this.style.opacity >= 0.1) {
-            this.style.opacity = Number(this.style.opacity) + 0.1; // <-- HERE
-          } else {
-            this.style.opacity = 0.1;
-            }
     } else {
         this.style.backgroundColor = color;
-    } 
+    }
+    console.log(color);
 }
 
 function changeColor(choice) {
